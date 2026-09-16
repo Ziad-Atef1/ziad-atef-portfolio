@@ -24,20 +24,20 @@ const CERTIFICATES_DATA = {
     tag: 'Artificial Intelligence'
   },
   'nti-ml-summer': {
-    title: 'NTI/ITIDA – Machine Learning Summer Training',
+    title: 'NTI / ITIDA – Machine Learning Summer Training (120 Hours)',
     issuer: 'National Telecommunication Institute (NTI) & ITIDA',
     date: 'Aug – Sep 2025 (120 Hours) | Score: 94%',
-    img: 'assets/certificates/Nti.jpg',
-    pdf: 'assets/certificates/Nti.jpg',
+    img: 'assets/certificates/Ziad_Atef_Yehia_page_1.png',
+    pdf: 'assets/docs/nti_ml_summer_94.pdf',
     desc: 'Intensive 120-hour technical training program covering core statistical machine learning, regression analysis, decision trees, and model evaluation metrics. Achieved an outstanding final grade of 94% across practical projects and coding assessments.',
     tag: 'Machine Learning (94%)'
   },
   'nti-digital-egypt': {
-    title: 'NTI/Digital Egypt Youth – Machine Learning for Data Analysis',
+    title: 'NTI / Digital Egypt Youth – Machine Learning for Data Analysis',
     issuer: 'NTI & Digital Egypt Youth Initiative',
     date: 'Nov 2025 – Jan 2026 (120 Hours) | Score: 84%',
-    img: 'assets/certificates/شهاده_تقرير_.jpg',
-    pdf: 'assets/certificates/شهاده_تقرير_.jpg',
+    img: 'assets/certificates/Nti.jpg',
+    pdf: 'assets/docs/nti_digital_egypt_84.jpg',
     desc: 'Comprehensive dual-track program featuring 90 technical hours of data preprocessing, feature engineering, and model deployment alongside 30 hours of client communication and freelance project delivery skills.',
     tag: 'Data Analysis & Freelancing'
   },
@@ -60,12 +60,12 @@ const CERTIFICATES_DATA = {
     tag: 'SQL & Relational DBs'
   },
   'ebda3-masr': {
-    title: 'Innovation Camp (Ebda3 Masr) – Certificate of Appreciation',
-    issuer: 'Ebda3 Masr Innovation Initiative',
-    date: 'April 2026',
-    img: 'assets/certificates/Ziad_Atef_Yehia_page_1.png',
-    pdf: 'assets/docs/ebda3_masr.pdf',
-    desc: 'Awarded for outstanding innovation and collaborative problem-solving during Ebda3 Masr, demonstrating an entrepreneurial mindset and technical application in team environments.',
+    title: 'Injaz Egypt / Innovation Camp – Certificate of Appreciation',
+    issuer: 'Injaz Egypt & Ministry of Youth and Sports',
+    date: 'Issued: April 2026',
+    img: 'assets/certificates/شهاده_تقرير_.jpg',
+    pdf: 'assets/docs/injaz_egypt_innovation_camp.jpg',
+    desc: 'Awarded for outstanding innovation and collaborative problem-solving during Innovation Camp by Injaz Egypt and the Ministry of Youth & Sports, demonstrating an entrepreneurial mindset and technical application in team environments.',
     tag: 'Innovation & Leadership'
   }
 };
