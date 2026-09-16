@@ -134,14 +134,16 @@ body.light-theme .form-textarea::placeholder {
   color: #9CA3AF !important;
 }
 
-body.light-theme .contact-icon {
+body.light-theme .contact-icon,
+body.light-theme .skill-icon-box {
   background: radial-gradient(circle at 30% 30%, #FFFDF7, #F3E5C8) !important;
   border-color: rgba(200, 164, 92, 0.5) !important;
   color: #B8860B !important;
   box-shadow: 0 4px 12px rgba(200, 164, 92, 0.18) !important;
 }
 
-body.light-theme .contact-item:hover .contact-icon {
+body.light-theme .contact-item:hover .contact-icon,
+body.light-theme .skill-card:hover .skill-icon-box {
   background: var(--accent) !important;
   color: #FFFFFF !important;
   box-shadow: 0 0 15px rgba(200, 164, 92, 0.4) !important;
