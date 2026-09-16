@@ -424,18 +424,24 @@ window.updateRetentionSim = function() {
   if (amountSpan) amountSpan.innerText = `$${amount}`;
   if (daysSpan) daysSpan.innerText = `${days} days`;
 
-  let score = Math.round(95 - (days * 0.45) + (amount * 0.12));
-  score = Math.min(Math.max(score, 18), 98);
+  // Realistic XGBoost Recency-Monetary Decay Formula:
+  // Recency decay: -0.8% per day for the first 30 days, -1.15% per day after 30 days
+  // Monetary boost: +0.08% per dollar spent above baseline ($50)
+  const recencyLoss = days <= 30 ? (days * 0.8) : (30 * 0.8 + (days - 30) * 1.15);
+  const monetaryGain = (amount - 50) * 0.08;
+  
+  let score = Math.round(85 - recencyLoss + monetaryGain);
+  score = Math.min(Math.max(score, 12), 98);
 
   const gaugeScore = document.getElementById('gauge-score');
   const gaugeStatus = document.getElementById('gauge-status');
 
   if (gaugeScore) gaugeScore.innerText = `${score}%`;
   if (gaugeStatus) {
-    if (score >= 75) {
+    if (score >= 70) {
       gaugeStatus.innerText = 'High Returning Likelihood';
       gaugeStatus.style.color = 'var(--accent)';
-    } else if (score >= 50) {
+    } else if (score >= 45) {
       gaugeStatus.innerText = 'Moderate Retention';
       gaugeStatus.style.color = '#E6C280';
     } else {
