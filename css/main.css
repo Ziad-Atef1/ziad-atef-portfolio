@@ -290,24 +290,7 @@ body {
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.9;
-}
-
-/* Translucent Glassmorphism so neural stars animation shines through all dark cards */
-body:not(.light-theme) .about-card,
-body:not(.light-theme) .skill-card,
-body:not(.light-theme) .cert-card,
-body:not(.light-theme) .project-card,
-body:not(.light-theme) .mini-project-card,
-body:not(.light-theme) .contact-item,
-body:not(.light-theme) .contact-form,
-body:not(.light-theme) .timeline-card,
-body:not(.light-theme) .ml-sandbox-card,
-body:not(.light-theme) .highlight-box,
-body:not(.light-theme) .footer {
-  background: rgba(18, 18, 18, 0.65) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  opacity: 0.7;
 }
 
 /* Base Typography Classes */
