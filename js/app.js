@@ -295,24 +295,81 @@ window.openProjectModal = function(projKey) {
 
   if (projKey === 'smart-campus-yolo') {
     interactiveWidgetHtml = `
-      <div class="ml-sandbox-card" style="margin-bottom:1.5rem;">
-        <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:1rem; margin-bottom:1rem;">
-          👁️ YOLOv8 Real-Time Occupancy Detector Simulation:
-        </h4>
-        <div style="position:relative; width:100%; height:180px; background:#000; border-radius:8px; border:1px solid var(--accent); overflow:hidden; display:flex; align-items:center; justify-content:center;">
-          <div style="position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.8); padding:0.3rem 0.75rem; border-radius:50px; font-size:0.8rem; color:var(--accent); border:1px solid var(--accent);">
-            ● LIVE INFERENCE: 14 Persons Detected
+      <div class="ml-sandbox-card" style="margin-bottom:1.5rem; background:#0D0D0D; border:1px solid var(--accent); border-radius:12px; padding:1.25rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
+          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:1rem; margin:0; display:flex; align-items:center; gap:0.5rem;">
+            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#E74C3C; box-shadow:0 0 10px #E74C3C;"></span>
+            LIVE INFERENCE STREAM — CAM 04 (Lecture Hall A-102)
+          </h4>
+          <span style="font-family:monospace; font-size:0.8rem; color:var(--text-on-dark-muted); background:rgba(255,255,255,0.06); padding:0.2rem 0.6rem; border-radius:4px; border:1px solid rgba(255,255,255,0.1);">
+            YOLOv8n · 1080p @ 60 FPS · 12.4ms
+          </span>
+        </div>
+
+        <!-- Real CCTV Camera Frame Container -->
+        <div style="position:relative; width:100%; height:320px; border-radius:10px; border:1.5px solid var(--accent); overflow:hidden; background:url('assets/images/lecture_hall_cctv.png') center/cover no-repeat; box-shadow:0 10px 30px rgba(0,0,0,0.8);">
+          
+          <!-- Dark Vignette Overlay for Real CCTV Lens Effect -->
+          <div style="position:absolute; inset:0; background:radial-gradient(circle at center, transparent 55%, rgba(0,0,0,0.65) 100%); pointer-events:none;"></div>
+
+          <!-- HUD Overlay Top Info -->
+          <div style="position:absolute; top:12px; left:12px; display:flex; align-items:center; gap:0.5rem; background:rgba(15,15,15,0.85); backdrop-filter:blur(6px); padding:0.35rem 0.85rem; border-radius:50px; border:1px solid var(--accent); color:var(--accent); font-size:0.78rem; font-weight:700; font-family:monospace;">
+            <span style="color:#2ECC71;">● REC</span> | DETECTED PERSONS: 18 | OCCUPANCY: 72%
           </div>
-          <div style="position:absolute; top:35%; left:20%; width:50px; height:70px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
-            <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.96</span>
+
+          <!-- HUD Overlay Top Right Timestamp -->
+          <div style="position:absolute; top:12px; right:12px; background:rgba(15,15,15,0.85); backdrop-filter:blur(6px); padding:0.35rem 0.75rem; border-radius:6px; border:1px solid rgba(255,255,255,0.15); color:#F5F5F0; font-size:0.75rem; font-family:monospace;">
+            2026-09-16 05:45:12 UTC
           </div>
-          <div style="position:absolute; top:40%; left:50%; width:48px; height:68px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
-            <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.94</span>
+
+          <!-- Bounding Box 1 (Person 1 - Desk Row Left) -->
+          <div style="position:absolute; top:28%; left:18%; width:90px; height:135px; border:2px solid #C8A45C; background:rgba(200, 164, 92, 0.15); border-radius:4px; box-shadow:0 0 12px rgba(200,164,92,0.6);">
+            <span style="background:#C8A45C; color:#141414; font-size:0.65rem; font-weight:800; font-family:monospace; padding:1px 5px; position:absolute; top:-18px; left:-2px; border-radius:2px; white-space:nowrap;">
+              person 0.97
+            </span>
           </div>
-          <div style="position:absolute; top:30%; right:20%; width:52px; height:72px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
-            <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.98</span>
+
+          <!-- Bounding Box 2 (Person 2 - Desk Row Center) -->
+          <div style="position:absolute; top:32%; left:42%; width:95px; height:130px; border:2px solid #C8A45C; background:rgba(200, 164, 92, 0.15); border-radius:4px; box-shadow:0 0 12px rgba(200,164,92,0.6);">
+            <span style="background:#C8A45C; color:#141414; font-size:0.65rem; font-weight:800; font-family:monospace; padding:1px 5px; position:absolute; top:-18px; left:-2px; border-radius:2px; white-space:nowrap;">
+              person 0.95
+            </span>
           </div>
-          <p style="color:var(--text-on-dark-muted); font-size:0.9rem;">Lecture Hall A-102 Camera Stream Overlay</p>
+
+          <!-- Bounding Box 3 (Person 3 - Desk Row Right) -->
+          <div style="position:absolute; top:25%; right:20%; width:85px; height:140px; border:2px solid #C8A45C; background:rgba(200, 164, 92, 0.15); border-radius:4px; box-shadow:0 0 12px rgba(200,164,92,0.6);">
+            <span style="background:#C8A45C; color:#141414; font-size:0.65rem; font-weight:800; font-family:monospace; padding:1px 5px; position:absolute; top:-18px; left:-2px; border-radius:2px; white-space:nowrap;">
+              person 0.98
+            </span>
+          </div>
+
+          <!-- Bounding Box 4 (Person 4 - Back Desk) -->
+          <div style="position:absolute; top:45%; left:62%; width:80px; height:120px; border:2px solid #2ECC71; background:rgba(46, 204, 113, 0.15); border-radius:4px; box-shadow:0 0 12px rgba(46, 204, 113, 0.5);">
+            <span style="background:#2ECC71; color:#141414; font-size:0.65rem; font-weight:800; font-family:monospace; padding:1px 5px; position:absolute; top:-18px; left:-2px; border-radius:2px; white-space:nowrap;">
+              person 0.92
+            </span>
+          </div>
+
+          <!-- HUD Camera Corner Label -->
+          <div style="position:absolute; bottom:12px; left:12px; color:var(--text-on-dark-muted); font-size:0.75rem; font-family:monospace;">
+            [SYSTEM READY] · ASSIUT NATIONAL UNIV - SMART CAMPUS NODE #04
+          </div>
+        </div>
+
+        <!-- Real-time Live Metrics Bar Below Feed -->
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:0.75rem; margin-top:1rem;">
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:0.75rem; border-radius:8px; text-align:center;">
+            <p style="font-size:0.75rem; color:var(--text-on-dark-muted); margin-bottom:0.2rem; font-weight:600;">ACTIVE COUNT</p>
+            <p style="font-size:1.3rem; font-family:var(--font-serif); font-weight:700; color:var(--accent); margin:0;">18 Persons</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:0.75rem; border-radius:8px; text-align:center;">
+            <p style="font-size:0.75rem; color:var(--text-on-dark-muted); margin-bottom:0.2rem; font-weight:600;">ROOM CAPACITY</p>
+            <p style="font-size:1.3rem; font-family:var(--font-serif); font-weight:700; color:#2ECC71; margin:0;">72% Occupied</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:0.75rem; border-radius:8px; text-align:center;">
+            <p style="font-size:0.75rem; color:var(--text-on-dark-muted); margin-bottom:0.2rem; font-weight:600;">INFERENCE SPEED</p>
+            <p style="font-size:1.3rem; font-family:var(--font-serif); font-weight:700; color:var(--accent); margin:0;">12.4 ms</p>
+          </div>
         </div>
       </div>
     `;
