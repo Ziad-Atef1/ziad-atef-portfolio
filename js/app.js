@@ -1,18 +1,16 @@
 /* ==========================================
    ZIAD ATEF PORTFOLIO — APP INTERACTION LOGIC
-   - Smooth Navigation Scrolling
-   - Active Section Spy
-   - Certification & Project Detail Modals
-   - Copy-to-Clipboard Functionality
    ========================================== */
 
-// Certificate Detail Data Dictionary
+// 1. Certificate Detail Data Dictionary
 const CERTIFICATES_DATA = {
   'nvidia-llm': {
     title: 'NVIDIA – Certificate of Competency: Building LLM Applications With Prompt Engineering',
     issuer: 'NVIDIA Academy',
     date: 'February 2026',
     img: 'assets/certificates/Certificate_Nvidia_Bulding_LLM_With_Prompt_Engineering_page_1.png',
+    img2: 'assets/certificates/Certificate_Nvidia_Bulding_LLM_With_Prompt_Engineering_page_2.png',
+    pdf: 'assets/docs/nvidia_prompt_engineering.pdf',
     desc: 'Focuses on designing, optimizing, and evaluating effective prompts for Large Language Models. Covers advanced techniques such as few-shot learning, chain-of-thought reasoning, and parameter tuning to build reliable enterprise AI workflows.',
     tag: 'GenAI & LLMs'
   },
@@ -21,6 +19,7 @@ const CERTIFICATES_DATA = {
     issuer: 'NVIDIA Academy',
     date: 'February 2026',
     img: 'assets/certificates/AI_for_All_From_Basics_to_GenAI_Practice_AI_for_All_From_Basics_to_GenAI_Practice_-_Course_Completion_Certificate_page_1.png',
+    pdf: 'assets/docs/nvidia_ai_for_all.pdf',
     desc: 'Comprehensive training on foundational AI concepts, transformer architectures, and practical generative AI applications. Emphasizes real-world AI deployment strategies, ethical considerations, and hands-on model implementation.',
     tag: 'Artificial Intelligence'
   },
@@ -29,6 +28,7 @@ const CERTIFICATES_DATA = {
     issuer: 'National Telecommunication Institute (NTI) & ITIDA',
     date: 'Aug – Sep 2025 (120 Hours) | Score: 94%',
     img: 'assets/certificates/Nti.jpg',
+    pdf: 'assets/certificates/Nti.jpg',
     desc: 'Intensive 120-hour technical training program covering core statistical machine learning, regression analysis, decision trees, and model evaluation metrics. Achieved an outstanding final grade of 94% across practical projects and coding assessments.',
     tag: 'Machine Learning (94%)'
   },
@@ -37,6 +37,7 @@ const CERTIFICATES_DATA = {
     issuer: 'NTI & Digital Egypt Youth Initiative',
     date: 'Nov 2025 – Jan 2026 (120 Hours) | Score: 84%',
     img: 'assets/certificates/شهاده_تقرير_.jpg',
+    pdf: 'assets/certificates/شهاده_تقرير_.jpg',
     desc: 'Comprehensive dual-track program featuring 90 technical hours of data preprocessing, feature engineering, and model deployment alongside 30 hours of client communication and freelance project delivery skills.',
     tag: 'Data Analysis & Freelancing'
   },
@@ -45,6 +46,7 @@ const CERTIFICATES_DATA = {
     issuer: 'Information Technology Institute (ITI)',
     date: 'October 2025',
     img: 'assets/certificates/Course_Certificate_En_page_1.png',
+    pdf: 'assets/docs/iti_python.pdf',
     desc: 'Mastery of fundamental Python programming concepts, object-oriented principles, data structures, and script automation. Serves as the backbone for data manipulation and algorithm development.',
     tag: 'Python Core'
   },
@@ -53,6 +55,7 @@ const CERTIFICATES_DATA = {
     issuer: 'Information Technology Institute (ITI)',
     date: 'October 2025',
     img: 'assets/certificates/Course_Certificate_En__1__page_1.png',
+    pdf: 'assets/docs/iti_database.pdf',
     desc: 'In-depth study of relational database design, SQL querying, normalization, indexing, and data management best practices for structured enterprise analytics.',
     tag: 'SQL & Relational DBs'
   },
@@ -61,12 +64,13 @@ const CERTIFICATES_DATA = {
     issuer: 'Ebda3 Masr Innovation Initiative',
     date: 'April 2026',
     img: 'assets/certificates/Ziad_Atef_Yehia_page_1.png',
+    pdf: 'assets/docs/ebda3_masr.pdf',
     desc: 'Awarded for outstanding innovation and collaborative problem-solving during Ebda3 Masr, demonstrating an entrepreneurial mindset and technical application in team environments.',
     tag: 'Innovation & Leadership'
   }
 };
 
-// Main Projects Data Dictionary
+// 2. Main Projects Data Dictionary
 const PROJECTS_DATA = {
   'retention-classification': {
     title: 'Customer Retention Classification — Restaurant Client (Freelance)',
@@ -102,14 +106,329 @@ const PROJECTS_DATA = {
   }
 };
 
+// 3. Global Functions Attached to Window
+window.toggleTheme = function() {
+  const isLight = document.body.classList.toggle('light-theme');
+  document.documentElement.classList.toggle('light-theme', isLight);
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  
+  if (themeToggleBtn) {
+    themeToggleBtn.innerHTML = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+  }
+  
+  localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+};
+
+window.toggleMobileNav = function() {
+  const navLinks = document.querySelector('.nav-links');
+  if (navLinks) navLinks.classList.toggle('active');
+};
+
+window.closeMobileNav = function() {
+  const navLinks = document.querySelector('.nav-links');
+  if (navLinks) navLinks.classList.remove('active');
+};
+
+window.filterCerts = function(category, btnElement) {
+  const cards = document.querySelectorAll('.certs-grid .cert-card');
+  const buttons = document.querySelectorAll('#cert-filters .filter-btn');
+
+  buttons.forEach(b => b.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+
+  cards.forEach(card => {
+    const tag = card.getAttribute('data-category');
+    if (category === 'all' || tag === category) {
+      card.style.display = 'flex';
+      card.classList.add('reveal-active');
+      card.style.opacity = '1';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
+
+window.filterProjects = function(category, btnElement) {
+  const cards = document.querySelectorAll('.projects-grid .project-card');
+  const buttons = document.querySelectorAll('#project-filters .filter-btn');
+
+  buttons.forEach(b => b.classList.remove('active'));
+  if (btnElement) btnElement.classList.add('active');
+
+  cards.forEach(card => {
+    const tag = card.getAttribute('data-category');
+    if (category === 'all' || tag === category) {
+      card.style.display = 'flex';
+      card.classList.add('reveal-active');
+      card.style.opacity = '1';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
+
+window.closeModal = function() {
+  const modalOverlay = document.getElementById('global-modal');
+  if (modalOverlay) modalOverlay.classList.remove('active');
+  document.body.style.overflow = 'auto';
+};
+
+window.openCvModal = function() {
+  const modalOverlay = document.getElementById('global-modal');
+  const modalBody = document.getElementById('modal-body-content');
+  if (!modalOverlay || !modalBody) return;
+
+  modalBody.innerHTML = `
+    <div style="display:flex; flex-direction:column; gap:1.25rem;">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; border-bottom:1px solid var(--border-dark); padding-bottom:1rem;">
+        <div>
+          <span class="badge" style="margin-bottom:0.4rem;">Curriculum Vitae</span>
+          <h3 style="color:var(--text-on-dark); font-size:1.5rem; margin:0;">Ziad Atef — Data Science & ML Engineer</h3>
+        </div>
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <a href="assets/docs/Ziad_Atef_CV.pdf" target="_blank" class="btn btn-outline-dark" style="padding:0.45rem 1.1rem; font-size:0.85rem; display:inline-flex; align-items:center; gap:0.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open Original PDF
+          </a>
+          <a href="assets/docs/Ziad_Atef_CV.pdf" download="Ziad_Atef_CV.pdf" class="btn btn-primary" style="padding:0.45rem 1.1rem; font-size:0.85rem; display:inline-flex; align-items:center; gap:0.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PDF
+          </a>
+        </div>
+      </div>
+      
+      <!-- Visual Image Pages Preview (Guaranteed rendering on all browsers & devices) -->
+      <div style="display:flex; flex-direction:column; gap:1.25rem; max-height:65vh; overflow-y:auto; padding-right:0.5rem;">
+        <img src="assets/certificates/Ziad_Atef_cv_page_1.png" alt="Ziad Atef CV Page 1" style="width:100%; border-radius:8px; border:1px solid var(--border-dark); box-shadow:0 8px 25px rgba(0,0,0,0.3);" />
+        <img src="assets/certificates/Ziad_Atef_cv_page_2.png" alt="Ziad Atef CV Page 2" style="width:100%; border-radius:8px; border:1px solid var(--border-dark); box-shadow:0 8px 25px rgba(0,0,0,0.3);" />
+      </div>
+
+      <button class="btn btn-outline-dark" onclick="closeModal()" style="width:100%; margin-top:0.25rem;">Close Preview</button>
+    </div>
+  `;
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.openCertModal = function(certKey) {
+  const data = CERTIFICATES_DATA[certKey];
+  const modalOverlay = document.getElementById('global-modal');
+  const modalBody = document.getElementById('modal-body-content');
+  if (!data || !modalOverlay || !modalBody) return;
+
+  let imagesHtml = `<img src="${data.img}" alt="${data.title}" style="width:100%; border-radius:8px; border:1px solid var(--border-dark);" />`;
+  if (data.img2) {
+    imagesHtml += `<img src="${data.img2}" alt="${data.title} Page 2" style="width:100%; border-radius:8px; border:1px solid var(--border-dark); margin-top:1rem;" />`;
+  }
+
+  modalBody.innerHTML = `
+    <div class="modal-split-grid">
+      <div class="modal-img-frame" style="max-height:65vh; overflow-y:auto; padding-right:0.25rem;">
+        ${imagesHtml}
+      </div>
+      <div>
+        <span class="badge badge-light-mode" style="margin-bottom:1rem;">${data.tag}</span>
+        <h2 style="font-size:1.6rem; color:var(--text-on-dark); margin-bottom:0.5rem; line-height:1.3;">${data.title}</h2>
+        <p style="color:var(--accent); font-weight:600; font-size:0.95rem; margin-bottom:0.25rem;">${data.issuer}</p>
+        <p style="color:var(--text-on-dark-muted); font-size:0.85rem; margin-bottom:1.25rem;">Issued: ${data.date}</p>
+        
+        <div style="background:rgba(200, 164, 92, 0.08); border-left:3px solid var(--accent); padding:1rem; border-radius:4px; margin-bottom:1.5rem;">
+          <h4 style="font-family:var(--font-sans); color:var(--text-on-dark); font-size:0.95rem; margin-bottom:0.4rem;">Certification Overview & Scope:</h4>
+          <p style="font-size:0.95rem; color:var(--text-on-dark-muted); line-height:1.6;">${data.desc}</p>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; flex-direction:column; margin-bottom:1rem;">
+          ${data.pdf ? `<a href="${data.pdf}" target="_blank" class="btn btn-primary" style="width:100%; font-size:0.88rem; justify-content:center; gap:0.4rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open Original PDF Document
+          </a>` : ''}
+          <button class="btn btn-outline-dark" onclick="closeModal()" style="width:100%;">Close Preview</button>
+        </div>
+      </div>
+    </div>
+  `;
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.openProjectModal = function(projKey) {
+  const data = PROJECTS_DATA[projKey];
+  const modalOverlay = document.getElementById('global-modal');
+  const modalBody = document.getElementById('modal-body-content');
+  if (!data || !modalOverlay || !modalBody) return;
+
+  const toolsHtml = data.tools.map(t => `<span class="pill-tag">${t}</span>`).join(' ');
+  let interactiveWidgetHtml = '';
+
+  if (projKey === 'retention-classification') {
+    interactiveWidgetHtml = `
+      <div class="ml-sandbox-card" style="margin-bottom:1.5rem;">
+        <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:1rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+          ⚡ Interactive XGBoost Retention Simulator:
+        </h4>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; align-items:center;">
+          <div>
+            <div class="range-slider-group">
+              <div class="range-slider-label">
+                <span>First Order Amount ($)</span>
+                <span id="slider-val-amount">$75</span>
+              </div>
+              <input type="range" id="slider-amount" min="10" max="250" value="75" class="range-slider" oninput="updateRetentionSim()" />
+            </div>
+            <div class="range-slider-group">
+              <div class="range-slider-label">
+                <span>Days Since First Order</span>
+                <span id="slider-val-days">14 days</span>
+              </div>
+              <input type="range" id="slider-days" min="1" max="90" value="14" class="range-slider" oninput="updateRetentionSim()" />
+            </div>
+          </div>
+          <div class="gauge-box">
+            <p style="font-size:0.8rem; text-transform:uppercase; color:var(--text-on-dark-muted); font-weight:600;">Predicted Retention Score</p>
+            <div class="gauge-val" id="gauge-score">92%</div>
+            <p id="gauge-status" style="font-size:0.8rem; color:var(--accent); margin-top:0.25rem;">High Returning Likelihood</p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (projKey === 'smart-campus-yolo') {
+    interactiveWidgetHtml = `
+      <div class="ml-sandbox-card" style="margin-bottom:1.5rem;">
+        <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:1rem; margin-bottom:1rem;">
+          👁️ YOLOv8 Real-Time Occupancy Detector Simulation:
+        </h4>
+        <div style="position:relative; width:100%; height:180px; background:#000; border-radius:8px; border:1px solid var(--accent); overflow:hidden; display:flex; align-items:center; justify-content:center;">
+          <div style="position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.8); padding:0.3rem 0.75rem; border-radius:50px; font-size:0.8rem; color:var(--accent); border:1px solid var(--accent);">
+            ● LIVE INFERENCE: 14 Persons Detected
+          </div>
+          <div style="position:absolute; top:35%; left:20%; width:50px; height:70px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
+            <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.96</span>
+          </div>
+          <div style="position:absolute; top:40%; left:50%; width:48px; height:68px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
+            <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.94</span>
+          </div>
+          <div style="position:absolute; top:30%; right:20%; width:52px; height:72px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
+            <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.98</span>
+          </div>
+          <p style="color:var(--text-on-dark-muted); font-size:0.9rem;">Lecture Hall A-102 Camera Stream Overlay</p>
+        </div>
+      </div>
+    `;
+  }
+
+  modalBody.innerHTML = `
+    <div>
+      <span class="badge" style="margin-bottom:1rem;">${data.category}</span>
+      <h2 style="font-size:1.8rem; color:var(--text-on-dark); margin-bottom:1.25rem; line-height:1.3;">${data.title}</h2>
+      
+      ${interactiveWidgetHtml}
+
+      <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:1.5rem;">
+        <div style="background:rgba(30, 30, 30, 0.8); border:1px solid var(--border-dark); padding:1.25rem; border-radius:12px;">
+          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">The Challenge:</h4>
+          <p style="color:var(--text-on-dark-muted); font-size:0.98rem; line-height:1.6;">${data.challenge}</p>
+        </div>
+
+        <div style="background:rgba(30, 30, 30, 0.8); border:1px solid var(--border-dark); padding:1.25rem; border-radius:12px;">
+          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">My Engineering Approach:</h4>
+          <p style="color:var(--text-on-dark-muted); font-size:0.98rem; line-height:1.6;">${data.approach}</p>
+        </div>
+
+        <div style="background:rgba(200, 164, 92, 0.1); border:1px solid var(--accent); padding:1.25rem; border-radius:12px;">
+          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">Key Results & Business Impact:</h4>
+          <p style="color:var(--text-on-dark); font-size:0.98rem; line-height:1.6;">${data.result}</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <p style="font-size:0.85rem; text-transform:uppercase; color:var(--text-on-dark-muted); margin-bottom:0.5rem; font-weight:600;">Technologies Used:</p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">${toolsHtml}</div>
+      </div>
+
+      <button class="btn btn-primary" onclick="closeModal()" style="width:100%;">Back to Portfolio</button>
+    </div>
+  `;
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.updateRetentionSim = function() {
+  const amountInput = document.getElementById('slider-amount');
+  const daysInput = document.getElementById('slider-days');
+  if (!amountInput || !daysInput) return;
+
+  const amount = parseInt(amountInput.value || 75);
+  const days = parseInt(daysInput.value || 14);
+
+  const amountSpan = document.getElementById('slider-val-amount');
+  const daysSpan = document.getElementById('slider-val-days');
+  if (amountSpan) amountSpan.innerText = `$${amount}`;
+  if (daysSpan) daysSpan.innerText = `${days} days`;
+
+  let score = Math.round(95 - (days * 0.45) + (amount * 0.12));
+  score = Math.min(Math.max(score, 18), 98);
+
+  const gaugeScore = document.getElementById('gauge-score');
+  const gaugeStatus = document.getElementById('gauge-status');
+
+  if (gaugeScore) gaugeScore.innerText = `${score}%`;
+  if (gaugeStatus) {
+    if (score >= 75) {
+      gaugeStatus.innerText = 'High Returning Likelihood';
+      gaugeStatus.style.color = 'var(--accent)';
+    } else if (score >= 50) {
+      gaugeStatus.innerText = 'Moderate Retention';
+      gaugeStatus.style.color = '#E6C280';
+    } else {
+      gaugeStatus.innerText = 'At-Risk Customer Churn';
+      gaugeStatus.style.color = '#E76F51';
+    }
+  }
+};
+
+window.copyToClipboard = function(text, elementId) {
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById(elementId);
+    if (btn) {
+      const originalText = btn.innerText;
+      btn.innerText = 'Copied!';
+      btn.style.backgroundColor = 'var(--accent)';
+      btn.style.color = '#141414';
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = 'var(--accent)';
+      }, 2000);
+    }
+  }).catch(err => {
+    console.error('Clipboard copy failed:', err);
+  });
+};
+
+// 4. Initial DOM Setup & Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Scroll Progress Bar & Scroll To Top Handler
+  // Theme Initial Check
+  const savedTheme = localStorage.getItem('portfolio-theme');
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    document.documentElement.classList.add('light-theme');
+    if (themeToggleBtn) themeToggleBtn.innerHTML = '🌙 Dark Mode';
+  } else {
+    document.body.classList.remove('light-theme');
+    document.documentElement.classList.remove('light-theme');
+    if (themeToggleBtn) themeToggleBtn.innerHTML = '☀️ Light Mode';
+  }
+
+  // Scroll Progress Bar & Scroll To Top
   const progressBar = document.getElementById('scroll-progress-bar');
   const scrollTopBtn = document.getElementById('scroll-to-top');
 
   window.addEventListener('scroll', () => {
     const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (window.pageYOffset / totalHeight) * 100;
+    const progress = totalHeight > 0 ? (window.pageYOffset / totalHeight) * 100 : 0;
     
     if (progressBar) progressBar.style.width = `${progress}%`;
     
@@ -128,250 +447,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Category Filtering Logic for Certifications & Projects
-  window.filterCerts = function(category, btnElement) {
-    const cards = document.querySelectorAll('.certs-grid .cert-card');
-    const buttons = document.querySelectorAll('#cert-filters .filter-btn');
-
-    buttons.forEach(b => b.classList.remove('active'));
-    if (btnElement) btnElement.classList.add('active');
-
-    cards.forEach(card => {
-      const tag = card.getAttribute('data-category');
-      if (category === 'all' || tag === category) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  };
-
-  window.filterProjects = function(category, btnElement) {
-    const cards = document.querySelectorAll('.projects-grid .project-card');
-    const buttons = document.querySelectorAll('#project-filters .filter-btn');
-
-    buttons.forEach(b => b.classList.remove('active'));
-    if (btnElement) btnElement.classList.add('active');
-
-    cards.forEach(card => {
-      const tag = card.getAttribute('data-category');
-      if (category === 'all' || tag === category) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  };
-
-  // 3. Modal Handler for Certifications & Projects
-  const modalOverlay = document.getElementById('global-modal');
-  const modalBody = document.getElementById('modal-body-content');
+  // Modal Overlay Close Events
   const modalCloseBtn = document.getElementById('modal-close-btn');
-
-  window.openCertModal = function(certKey) {
-    const data = CERTIFICATES_DATA[certKey];
-    if (!data) return;
-
-    modalBody.innerHTML = `
-      <div class="modal-split-grid">
-        <div class="modal-img-frame">
-          <img src="${data.img}" alt="${data.title}" />
-        </div>
-        <div>
-          <span class="badge badge-light-mode" style="margin-bottom:1rem;">${data.tag}</span>
-          <h2 style="font-size:1.6rem; color:var(--text-on-dark); margin-bottom:0.5rem; line-height:1.3;">${data.title}</h2>
-          <p style="color:var(--accent); font-weight:600; font-size:0.95rem; margin-bottom:0.25rem;">${data.issuer}</p>
-          <p style="color:var(--text-on-dark-muted); font-size:0.85rem; margin-bottom:1.5rem;">Issued: ${data.date}</p>
-          
-          <div style="background:rgba(200, 164, 92, 0.08); border-left:3px solid var(--accent); padding:1rem; border-radius:4px; margin-bottom:1.5rem;">
-            <h4 style="font-family:var(--font-sans); color:var(--text-on-dark); font-size:0.95rem; margin-bottom:0.4rem;">Certification Overview & Scope:</h4>
-            <p style="font-size:0.95rem; color:var(--text-on-dark-muted); line-height:1.6;">${data.desc}</p>
-          </div>
-          <button class="btn btn-outline-dark" onclick="closeModal()" style="width:100%;">Close Preview</button>
-        </div>
-      </div>
-    `;
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  };
-
-  window.openProjectModal = function(projKey) {
-    const data = PROJECTS_DATA[projKey];
-    if (!data) return;
-
-    const toolsHtml = data.tools.map(t => `<span class="pill-tag">${t}</span>`).join(' ');
-
-    let interactiveWidgetHtml = '';
-
-    // Interactive Widget for Customer Retention ML
-    if (projKey === 'retention-classification') {
-      interactiveWidgetHtml = `
-        <div class="ml-sandbox-card" style="margin-bottom:1.5rem;">
-          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:1rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
-            ⚡ Interactive XGBoost Retention Simulator:
-          </h4>
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.5rem; align-items:center;">
-            <div>
-              <div class="range-slider-group">
-                <div class="range-slider-label">
-                  <span>First Order Amount ($)</span>
-                  <span id="slider-val-amount">$75</span>
-                </div>
-                <input type="range" id="slider-amount" min="10" max="250" value="75" class="range-slider" oninput="updateRetentionSim()" />
-              </div>
-              <div class="range-slider-group">
-                <div class="range-slider-label">
-                  <span>Days Since First Order</span>
-                  <span id="slider-val-days">14 days</span>
-                </div>
-                <input type="range" id="slider-days" min="1" max="90" value="14" class="range-slider" oninput="updateRetentionSim()" />
-              </div>
-            </div>
-            <div class="gauge-box">
-              <p style="font-size:0.8rem; text-transform:uppercase; color:var(--text-on-dark-muted); font-weight:600;">Predicted Retention Score</p>
-              <div class="gauge-val" id="gauge-score">92%</div>
-              <p id="gauge-status" style="font-size:0.8rem; color:var(--accent); margin-top:0.25rem;">High Returning Likelihood</p>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    // Interactive Widget for YOLOv8 Computer Vision
-    if (projKey === 'smart-campus-yolo') {
-      interactiveWidgetHtml = `
-        <div class="ml-sandbox-card" style="margin-bottom:1.5rem;">
-          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:1rem; margin-bottom:1rem;">
-            👁️ YOLOv8 Real-Time Occupancy Detector Simulation:
-          </h4>
-          <div style="position:relative; width:100%; height:180px; background:#000; border-radius:8px; border:1px solid var(--accent); overflow:hidden; display:flex; align-items:center; justify-content:center;">
-            <div style="position:absolute; top:12px; left:12px; background:rgba(0,0,0,0.8); padding:0.3rem 0.75rem; border-radius:50px; font-size:0.8rem; color:var(--accent); border:1px solid var(--accent);">
-              ● LIVE INFERENCE: 14 Persons Detected
-            </div>
-            <!-- Animated Bounding Boxes Simulation -->
-            <div style="position:absolute; top:35%; left:20%; width:50px; height:70px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
-              <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.96</span>
-            </div>
-            <div style="position:absolute; top:40%; left:50%; width:48px; height:68px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
-              <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.94</span>
-            </div>
-            <div style="position:absolute; top:30%; right:20%; width:52px; height:72px; border:2px solid #C8A45C; border-radius:4px; box-shadow:0 0 10px rgba(200,164,92,0.5);">
-              <span style="background:#C8A45C; color:#000; font-size:0.6rem; font-weight:bold; padding:1px 3px; position:absolute; top:-14px; left:0;">person 0.98</span>
-            </div>
-            <p style="color:var(--text-on-dark-muted); font-size:0.9rem;">Lecture Hall A-102 Camera Stream Overlay</p>
-          </div>
-        </div>
-      `;
-    }
-
-    modalBody.innerHTML = `
-      <div>
-        <span class="badge" style="margin-bottom:1rem;">${data.category}</span>
-        <h2 style="font-size:1.8rem; color:var(--text-on-dark); margin-bottom:1.25rem; line-height:1.3;">${data.title}</h2>
-        
-        ${interactiveWidgetHtml}
-
-        <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:1.5rem;">
-          <div style="background:rgba(30, 30, 30, 0.8); border:1px solid var(--border-dark); padding:1.25rem; border-radius:12px;">
-            <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">The Challenge:</h4>
-            <p style="color:var(--text-on-dark-muted); font-size:0.98rem; line-height:1.6;">${data.challenge}</p>
-          </div>
-
-          <div style="background:rgba(30, 30, 30, 0.8); border:1px solid var(--border-dark); padding:1.25rem; border-radius:12px;">
-            <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">My Engineering Approach:</h4>
-            <p style="color:var(--text-on-dark-muted); font-size:0.98rem; line-height:1.6;">${data.approach}</p>
-          </div>
-
-          <div style="background:rgba(200, 164, 92, 0.1); border:1px solid var(--accent); padding:1.25rem; border-radius:12px;">
-            <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">Key Results & Business Impact:</h4>
-            <p style="color:var(--text-on-dark); font-size:0.98rem; line-height:1.6;">${data.result}</p>
-          </div>
-        </div>
-
-        <div style="margin-bottom:1.5rem;">
-          <p style="font-size:0.85rem; text-transform:uppercase; color:var(--text-on-dark-muted); margin-bottom:0.5rem; font-weight:600;">Technologies Used:</p>
-          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">${toolsHtml}</div>
-        </div>
-
-        <button class="btn btn-primary" onclick="closeModal()" style="width:100%;">Back to Portfolio</button>
-      </div>
-    `;
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  };
-
-  // Retention ML Simulator Calculation Helper
-  window.updateRetentionSim = function() {
-    const amount = parseInt(document.getElementById('slider-amount').value || 75);
-    const days = parseInt(document.getElementById('slider-days').value || 14);
-
-    document.getElementById('slider-val-amount').innerText = `$${amount}`;
-    document.getElementById('slider-val-days').innerText = `${days} days`;
-
-    // Simulated XGBoost probability model equation based on feature weights
-    let score = Math.round(95 - (days * 0.45) + (amount * 0.12));
-    score = Math.min(Math.max(score, 18), 98);
-
-    const gaugeScore = document.getElementById('gauge-score');
-    const gaugeStatus = document.getElementById('gauge-status');
-
-    if (gaugeScore) gaugeScore.innerText = `${score}%`;
-    if (gaugeStatus) {
-      if (score >= 75) {
-        gaugeStatus.innerText = 'High Returning Likelihood';
-        gaugeStatus.style.color = 'var(--accent)';
-      } else if (score >= 50) {
-        gaugeStatus.innerText = 'Moderate Retention';
-        gaugeStatus.style.color = '#E6C280';
-      } else {
-        gaugeStatus.innerText = 'At-Risk Customer Churn';
-        gaugeStatus.style.color = '#E76F51';
-      }
-    }
-  };
-
-  window.closeModal = function() {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  };
+  const modalOverlay = document.getElementById('global-modal');
 
   if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', closeModal);
+    modalCloseBtn.addEventListener('click', window.closeModal);
   }
 
   if (modalOverlay) {
     modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) closeModal();
+      if (e.target === modalOverlay) window.closeModal();
     });
   }
 
-  // 4. Copy To Clipboard Helper
-  window.copyToClipboard = function(text, elementId) {
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById(elementId);
-      if (btn) {
-        const originalText = btn.innerText;
-        btn.innerText = 'Copied!';
-        btn.style.backgroundColor = 'var(--accent)';
-        btn.style.color = '#141414';
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.backgroundColor = 'transparent';
-          btn.style.color = 'var(--accent)';
-        }, 2000);
-      }
-    });
-  };
-
-  // 5. Contact Form Direct Email Handler to ziad.atef.yehia@gmail.com
+  // Contact Form Submission Handler
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerText;
-      submitBtn.innerText = 'Sending Message...';
-      submitBtn.disabled = true;
+      const originalText = submitBtn ? submitBtn.innerText : 'Send Message';
+      if (submitBtn) {
+        submitBtn.innerText = 'Sending Message...';
+        submitBtn.disabled = true;
+      }
 
       const formData = new FormData(contactForm);
       const data = Object.fromEntries(formData.entries());
@@ -398,37 +498,13 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = `mailto:ziad.atef.yehia@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry from " + data.name)}&body=${encodeURIComponent(data.message + "\n\nFrom: " + data.name + " (" + data.email + ")")}`;
         }
       } catch (err) {
-  // 6. Dark / Light Theme Toggle Functionality
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  
-  if (localStorage.getItem('portfolio-theme') === 'light') {
-    document.body.classList.add('light-theme');
-    if (themeToggleBtn) themeToggleBtn.innerHTML = '🌙 Dark Mode';
+        window.location.href = `mailto:ziad.atef.yehia@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry from " + data.name)}&body=${encodeURIComponent(data.message + "\n\nFrom: " + data.name + " (" + data.email + ")")}`;
+      } finally {
+        if (submitBtn) {
+          submitBtn.innerText = originalText;
+          submitBtn.disabled = false;
+        }
+      }
+    });
   }
-
-  window.toggleTheme = function() {
-    document.body.classList.toggle('light-theme');
-    const isLight = document.body.classList.contains('light-theme');
-    
-    if (themeToggleBtn) {
-      themeToggleBtn.innerHTML = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
-    }
-    
-    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
-  };
-
-  // 7. Live CV PDF Preview Modal Handler
-  window.openCvModal = function() {
-    modalBody.innerHTML = `
-      <div style="height:78vh; display:flex; flex-direction:column;">
-        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
-          <h3 style="color:var(--text-on-dark); font-size:1.4rem;">Ziad Atef — Curriculum Vitae</h3>
-          <a href="assets/docs/Ziad_Atef_CV.pdf" download class="btn btn-primary" style="padding:0.4rem 1rem; font-size:0.85rem;">Download PDF</a>
-        </div>
-        <iframe src="assets/docs/Ziad_Atef_CV.pdf" style="width:100%; height:100%; border:1px solid var(--border-dark); border-radius:8px; background:#fff;"></iframe>
-      </div>
-    `;
-    modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  };
 });

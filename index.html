@@ -26,18 +26,22 @@
         <span>Ziad Atef</span>
       </a>
 
+      <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileNav()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+
       <nav>
         <ul class="nav-links">
-          <li><a href="#hero" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#education" class="nav-link">Education</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#certifications" class="nav-link">Certifications</a></li>
-          <li><a href="#projects" class="nav-link">Portfolio</a></li>
-          <li><a href="#training-projects" class="nav-link">Training</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#hero" class="nav-link active" onclick="closeMobileNav()">Home</a></li>
+          <li><a href="#about" class="nav-link" onclick="closeMobileNav()">About</a></li>
+          <li><a href="#education" class="nav-link" onclick="closeMobileNav()">Education</a></li>
+          <li><a href="#skills" class="nav-link" onclick="closeMobileNav()">Skills</a></li>
+          <li><a href="#certifications" class="nav-link" onclick="closeMobileNav()">Certifications</a></li>
+          <li><a href="#projects" class="nav-link" onclick="closeMobileNav()">Portfolio</a></li>
+          <li><a href="#training-projects" class="nav-link" onclick="closeMobileNav()">Training</a></li>
+          <li><a href="#contact" class="nav-link" onclick="closeMobileNav()">Contact</a></li>
           <li>
-            <button id="theme-toggle" class="filter-btn" onclick="toggleTheme()" style="padding:0.35rem 0.85rem; font-size:0.8rem;">
+            <button id="theme-toggle" type="button" class="filter-btn" onclick="toggleTheme()" style="padding:0.35rem 0.85rem; font-size:0.8rem;">
               ☀️ Light Mode
             </button>
           </li>
@@ -346,7 +350,7 @@
             <h3 class="cert-title">Building LLM Applications With Prompt Engineering</h3>
             <p class="cert-date">Issued: February 2026</p>
           </div>
-          <button class="cert-action-btn">
+          <button type="button" class="cert-action-btn" onclick="openCertModal('nvidia-llm'); event.stopPropagation();">
             <span>View Certificate</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -359,7 +363,7 @@
             <h3 class="cert-title">AI for All: From Basics to GenAI Practice</h3>
             <p class="cert-date">Issued: February 2026</p>
           </div>
-          <button class="cert-action-btn">
+          <button type="button" class="cert-action-btn" onclick="openCertModal('nvidia-ai-for-all'); event.stopPropagation();">
             <span>View Certificate</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -372,7 +376,7 @@
             <h3 class="cert-title">Machine Learning Summer Training (120 Hours)</h3>
             <p class="cert-date">Aug – Sep 2025 · Score: 94%</p>
           </div>
-          <button class="cert-action-btn">
+          <button type="button" class="cert-action-btn" onclick="openCertModal('nti-ml-summer'); event.stopPropagation();">
             <span>View Certificate</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -385,7 +389,7 @@
             <h3 class="cert-title">Machine Learning for Data Analysis</h3>
             <p class="cert-date">Nov 2025 – Jan 2026 · Score: 84%</p>
           </div>
-          <button class="cert-action-btn">
+          <button type="button" class="cert-action-btn" onclick="openCertModal('nti-digital-egypt'); event.stopPropagation();">
             <span>View Certificate</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -398,7 +402,7 @@
             <h3 class="cert-title">Python Programming Basics</h3>
             <p class="cert-date">Issued: October 2025</p>
           </div>
-          <button class="cert-action-btn">
+          <button type="button" class="cert-action-btn" onclick="openCertModal('iti-python'); event.stopPropagation();">
             <span>View Certificate</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -411,7 +415,7 @@
             <h3 class="cert-title">Database Fundamentals</h3>
             <p class="cert-date">Issued: October 2025</p>
           </div>
-          <button class="cert-action-btn">
+          <button type="button" class="cert-action-btn" onclick="openCertModal('iti-database'); event.stopPropagation();">
             <span>View Certificate</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -424,7 +428,7 @@
             <h3 class="cert-title">Ebda3 Masr Certificate of Appreciation</h3>
             <p class="cert-date">Issued: April 2026</p>
           </div>
-          <button class="cert-action-btn">
+          <button type="button" class="cert-action-btn" onclick="openCertModal('ebda3-masr'); event.stopPropagation();">
             <span>View Certificate</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -472,9 +476,9 @@
               <span class="pill-tag">XGBoost</span>
               <span class="pill-tag">SMOTE</span>
             </div>
-            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
-              View Details →
-            </span>
+            <button type="button" class="cert-action-btn" onclick="openProjectModal('retention-classification'); event.stopPropagation();">
+              <span>View Details →</span>
+            </button>
           </div>
         </div>
 
@@ -499,9 +503,9 @@
               <span class="pill-tag">ReportLab</span>
               <span class="pill-tag">WeasyPrint</span>
             </div>
-            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
-              View Details →
-            </span>
+            <button type="button" class="cert-action-btn" onclick="openProjectModal('arabic-sales-report'); event.stopPropagation();">
+              <span>View Details →</span>
+            </button>
           </div>
         </div>
 
@@ -526,9 +530,9 @@
               <span class="pill-tag">VBA</span>
               <span class="pill-tag">Pivot Tables</span>
             </div>
-            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
-              View Details →
-            </span>
+            <button type="button" class="cert-action-btn" onclick="openProjectModal('arabic-sales-dashboard'); event.stopPropagation();">
+              <span>View Details →</span>
+            </button>
           </div>
         </div>
 
@@ -553,9 +557,9 @@
               <span class="pill-tag">Roboflow</span>
               <span class="pill-tag">Computer Vision</span>
             </div>
-            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
-              View Details →
-            </span>
+            <button type="button" class="cert-action-btn" onclick="openProjectModal('smart-campus-yolo'); event.stopPropagation();">
+              <span>View Details →</span>
+            </button>
           </div>
         </div>
       </div>
