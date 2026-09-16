@@ -814,6 +814,63 @@
   display: block;
 }
 
+/* Modal Content Component Boxes */
+.modal-box {
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid var(--border-dark);
+  padding: 1.25rem;
+  border-radius: 12px;
+  transition: all var(--transition-fast);
+}
+
+.modal-box h4 {
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.modal-box p {
+  color: var(--text-on-dark-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.modal-box.highlight-box-accent {
+  background: rgba(200, 164, 92, 0.1);
+  border: 1px solid var(--accent);
+}
+
+.modal-box.highlight-box-accent p {
+  color: var(--text-on-dark);
+}
+
+.cctv-metric-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.cctv-metric-card .metric-title {
+  font-size: 0.75rem;
+  color: var(--text-on-dark-muted);
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
+
+.cctv-metric-card .metric-value {
+  font-size: 1.3rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}
+
 /* ------------------------------------------
    11. FOOTER
    ------------------------------------------ */

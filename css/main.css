@@ -134,10 +134,85 @@ body.light-theme .form-textarea::placeholder {
   color: #9CA3AF !important;
 }
 
+body.light-theme .contact-icon {
+  background: radial-gradient(circle at 30% 30%, #FFFDF7, #F3E5C8) !important;
+  border-color: rgba(200, 164, 92, 0.5) !important;
+  color: #B8860B !important;
+  box-shadow: 0 4px 12px rgba(200, 164, 92, 0.18) !important;
+}
+
+body.light-theme .contact-item:hover .contact-icon {
+  background: var(--accent) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 15px rgba(200, 164, 92, 0.4) !important;
+}
+
 body.light-theme .modal-container {
   background: #FFFFFF !important;
   border-color: var(--accent) !important;
   box-shadow: 0 25px 60px rgba(0,0,0,0.15) !important;
+}
+
+body.light-theme .modal-container h2,
+body.light-theme .modal-container h3 {
+  color: #1F2937 !important;
+}
+
+body.light-theme .modal-box {
+  background: #F3F4F6 !important;
+  border-color: rgba(200, 164, 92, 0.35) !important;
+}
+
+body.light-theme .modal-box h4 {
+  color: #B8860B !important;
+}
+
+body.light-theme .modal-box p {
+  color: #1F2937 !important;
+}
+
+body.light-theme .modal-box.highlight-box-accent {
+  background: #FFF9EE !important;
+  border-color: var(--accent) !important;
+}
+
+body.light-theme .modal-box.highlight-box-accent p {
+  color: #1F2937 !important;
+}
+
+body.light-theme .cert-modal-box {
+  background: #FFF9EE !important;
+  border-left-color: var(--accent) !important;
+}
+
+body.light-theme .cert-modal-box h4 {
+  color: #1F2937 !important;
+}
+
+body.light-theme .cert-modal-box p {
+  color: #374151 !important;
+}
+
+body.light-theme .gauge-box {
+  background: #FFF9EE !important;
+  border-color: var(--accent) !important;
+}
+
+body.light-theme .gauge-box p {
+  color: #4B5563 !important;
+}
+
+body.light-theme .range-slider-label {
+  color: #1F2937 !important;
+}
+
+body.light-theme .cctv-metric-card {
+  background: #F8F9FA !important;
+  border-color: rgba(200, 164, 92, 0.3) !important;
+}
+
+body.light-theme .cctv-metric-card .metric-title {
+  color: #4B5563 !important;
 }
 
 body.light-theme .modal-close-btn {

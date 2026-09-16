@@ -232,9 +232,9 @@ window.openCertModal = function(certKey) {
         <p style="color:var(--accent); font-weight:600; font-size:0.95rem; margin-bottom:0.25rem;">${data.issuer}</p>
         <p style="color:var(--text-on-dark-muted); font-size:0.85rem; margin-bottom:1.25rem;">Issued: ${data.date}</p>
         
-        <div style="background:rgba(200, 164, 92, 0.08); border-left:3px solid var(--accent); padding:1rem; border-radius:4px; margin-bottom:1.5rem;">
-          <h4 style="font-family:var(--font-sans); color:var(--text-on-dark); font-size:0.95rem; margin-bottom:0.4rem;">Certification Overview & Scope:</h4>
-          <p style="font-size:0.95rem; color:var(--text-on-dark-muted); line-height:1.6;">${data.desc}</p>
+        <div class="cert-modal-box" style="padding:1rem; border-radius:4px; border-left:3px solid var(--accent); margin-bottom:1.5rem;">
+          <h4 style="font-family:var(--font-sans); font-size:0.95rem; margin-bottom:0.4rem;">Certification Overview & Scope:</h4>
+          <p style="font-size:0.95rem; line-height:1.6;">${data.desc}</p>
         </div>
 
         <div style="display:flex; gap:0.75rem; flex-direction:column; margin-bottom:1rem;">
@@ -284,7 +284,7 @@ window.openProjectModal = function(projKey) {
             </div>
           </div>
           <div class="gauge-box">
-            <p style="font-size:0.8rem; text-transform:uppercase; color:var(--text-on-dark-muted); font-weight:600;">Predicted Retention Score</p>
+            <p style="font-size:0.8rem; text-transform:uppercase; font-weight:600;">Predicted Retention Score</p>
             <div class="gauge-val" id="gauge-score">92%</div>
             <p id="gauge-status" style="font-size:0.8rem; color:var(--accent); margin-top:0.25rem;">High Returning Likelihood</p>
           </div>
@@ -358,17 +358,17 @@ window.openProjectModal = function(projKey) {
 
         <!-- Real-time Live Metrics Bar Below Feed -->
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:0.75rem; margin-top:1rem;">
-          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:0.75rem; border-radius:8px; text-align:center;">
-            <p style="font-size:0.75rem; color:var(--text-on-dark-muted); margin-bottom:0.2rem; font-weight:600;">ACTIVE COUNT</p>
-            <p style="font-size:1.3rem; font-family:var(--font-serif); font-weight:700; color:var(--accent); margin:0;">18 Persons</p>
+          <div class="cctv-metric-card">
+            <p class="metric-title">ACTIVE COUNT</p>
+            <p class="metric-value">18 Persons</p>
           </div>
-          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:0.75rem; border-radius:8px; text-align:center;">
-            <p style="font-size:0.75rem; color:var(--text-on-dark-muted); margin-bottom:0.2rem; font-weight:600;">ROOM CAPACITY</p>
-            <p style="font-size:1.3rem; font-family:var(--font-serif); font-weight:700; color:#2ECC71; margin:0;">72% Occupied</p>
+          <div class="cctv-metric-card">
+            <p class="metric-title">ROOM CAPACITY</p>
+            <p class="metric-value" style="color:#2ECC71;">72% Occupied</p>
           </div>
-          <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); padding:0.75rem; border-radius:8px; text-align:center;">
-            <p style="font-size:0.75rem; color:var(--text-on-dark-muted); margin-bottom:0.2rem; font-weight:600;">INFERENCE SPEED</p>
-            <p style="font-size:1.3rem; font-family:var(--font-serif); font-weight:700; color:var(--accent); margin:0;">12.4 ms</p>
+          <div class="cctv-metric-card">
+            <p class="metric-title">INFERENCE SPEED</p>
+            <p class="metric-value">12.4 ms</p>
           </div>
         </div>
       </div>
@@ -378,24 +378,24 @@ window.openProjectModal = function(projKey) {
   modalBody.innerHTML = `
     <div>
       <span class="badge" style="margin-bottom:1rem;">${data.category}</span>
-      <h2 style="font-size:1.8rem; color:var(--text-on-dark); margin-bottom:1.25rem; line-height:1.3;">${data.title}</h2>
+      <h2 style="font-size:1.8rem; margin-bottom:1.25rem; line-height:1.3;">${data.title}</h2>
       
       ${interactiveWidgetHtml}
 
       <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:1.5rem;">
-        <div style="background:rgba(30, 30, 30, 0.8); border:1px solid var(--border-dark); padding:1.25rem; border-radius:12px;">
-          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">The Challenge:</h4>
-          <p style="color:var(--text-on-dark-muted); font-size:0.98rem; line-height:1.6;">${data.challenge}</p>
+        <div class="modal-box">
+          <h4>The Challenge:</h4>
+          <p>${data.challenge}</p>
         </div>
 
-        <div style="background:rgba(30, 30, 30, 0.8); border:1px solid var(--border-dark); padding:1.25rem; border-radius:12px;">
-          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">My Engineering Approach:</h4>
-          <p style="color:var(--text-on-dark-muted); font-size:0.98rem; line-height:1.6;">${data.approach}</p>
+        <div class="modal-box">
+          <h4>My Engineering Approach:</h4>
+          <p>${data.approach}</p>
         </div>
 
-        <div style="background:rgba(200, 164, 92, 0.1); border:1px solid var(--accent); padding:1.25rem; border-radius:12px;">
-          <h4 style="color:var(--accent); font-family:var(--font-sans); font-size:0.95rem; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:0.4rem;">Key Results & Business Impact:</h4>
-          <p style="color:var(--text-on-dark); font-size:0.98rem; line-height:1.6;">${data.result}</p>
+        <div class="modal-box highlight-box-accent">
+          <h4>Key Results & Business Impact:</h4>
+          <p>${data.result}</p>
         </div>
       </div>
 
