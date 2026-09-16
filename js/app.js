@@ -409,17 +409,33 @@ window.copyToClipboard = function(text, elementId) {
 
 // 4. Initial DOM Setup & Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
+  // Direct Event Listeners Attachment for bulletproof interaction
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.toggleTheme();
+    });
+  }
+
+  const mobileToggle = document.getElementById('mobile-nav-toggle');
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.toggleMobileNav();
+    });
+  }
+
   // Theme Initial Check
   const savedTheme = localStorage.getItem('portfolio-theme');
-  const themeToggleBtn = document.getElementById('theme-toggle');
   if (savedTheme === 'light') {
     document.body.classList.add('light-theme');
     document.documentElement.classList.add('light-theme');
-    if (themeToggleBtn) themeToggleBtn.innerHTML = '🌙 Dark Mode';
+    if (themeBtn) themeBtn.innerHTML = '🌙 Dark Mode';
   } else {
     document.body.classList.remove('light-theme');
     document.documentElement.classList.remove('light-theme');
-    if (themeToggleBtn) themeToggleBtn.innerHTML = '☀️ Light Mode';
+    if (themeBtn) themeBtn.innerHTML = '☀️ Light Mode';
   }
 
   // Scroll Progress Bar & Scroll To Top
