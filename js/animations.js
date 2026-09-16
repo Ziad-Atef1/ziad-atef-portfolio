@@ -45,4 +45,79 @@ document.addEventListener('DOMContentLoaded', () => {
   }, observerOptions);
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // 3. Dynamic Subtitle Typing Animation in Hero
+  const typedSpan = document.getElementById('hero-typed-text');
+  if (typedSpan) {
+    const roles = [
+      'Data Science & Machine Learning Engineer',
+      'Computer Vision Specialist (YOLOv8)',
+      'Data Automation & Pipeline Engineer',
+      'CS & AI Student at Assiut National University'
+    ];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      
+      if (isDeleting) {
+        typedSpan.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedSpan.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let typeSpeed = isDeleting ? 30 : 60;
+
+      if (!isDeleting && charIndex === currentRole.length) {
+        typeSpeed = 2200; // Pause at full word
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typeSpeed = 400; // Pause before typing next
+      }
+
+      setTimeout(typeEffect, typeSpeed);
+    }
+
+    typeEffect();
+  }
+
+  // 4. 3D Interactive Card Tilt Effect on Hover
+  const tiltCards = document.querySelectorAll('.interactive-card');
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -6; // max 6deg tilt
+      const rotateY = ((x - centerX) / centerX) * 6;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+    });
+  });
+
+  // 5. Skill Bar Fill Trigger on Intersection
+  const skillBars = document.querySelectorAll('.skill-bar-fill');
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target;
+        const targetWidth = fill.getAttribute('data-width') || '90%';
+        fill.style.width = targetWidth;
+      }
+    });
+  }, { threshold: 0.2 });
+
+  skillBars.forEach(bar => skillObserver.observe(bar));
 });

@@ -398,11 +398,37 @@ document.addEventListener('DOMContentLoaded', () => {
           window.location.href = `mailto:ziad.atef.yehia@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry from " + data.name)}&body=${encodeURIComponent(data.message + "\n\nFrom: " + data.name + " (" + data.email + ")")}`;
         }
       } catch (err) {
-        window.location.href = `mailto:ziad.atef.yehia@gmail.com?subject=${encodeURIComponent("Portfolio Inquiry from " + data.name)}&body=${encodeURIComponent(data.message + "\n\nFrom: " + data.name + " (" + data.email + ")")}`;
-      } finally {
-        submitBtn.innerText = originalText;
-        submitBtn.disabled = false;
-      }
-    });
+  // 6. Dark / Light Theme Toggle Functionality
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  
+  if (localStorage.getItem('portfolio-theme') === 'light') {
+    document.body.classList.add('light-theme');
+    if (themeToggleBtn) themeToggleBtn.innerHTML = '🌙 Dark Mode';
   }
+
+  window.toggleTheme = function() {
+    document.body.classList.toggle('light-theme');
+    const isLight = document.body.classList.contains('light-theme');
+    
+    if (themeToggleBtn) {
+      themeToggleBtn.innerHTML = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+    }
+    
+    localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+  };
+
+  // 7. Live CV PDF Preview Modal Handler
+  window.openCvModal = function() {
+    modalBody.innerHTML = `
+      <div style="height:78vh; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+          <h3 style="color:var(--text-on-dark); font-size:1.4rem;">Ziad Atef — Curriculum Vitae</h3>
+          <a href="assets/docs/Ziad_Atef_CV.pdf" download class="btn btn-primary" style="padding:0.4rem 1rem; font-size:0.85rem;">Download PDF</a>
+        </div>
+        <iframe src="assets/docs/Ziad_Atef_CV.pdf" style="width:100%; height:100%; border:1px solid var(--border-dark); border-radius:8px; background:#fff;"></iframe>
+      </div>
+    `;
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
 });

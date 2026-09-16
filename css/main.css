@@ -50,6 +50,30 @@
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Light Theme Variable Overrides */
+body.light-theme {
+  --bg-dark: #FAF8F5;
+  --bg-light: #FFFFFF;
+  --text-on-dark: #1A1A1A;
+  --text-on-dark-muted: rgba(26, 26, 26, 0.75);
+  --border-dark: rgba(200, 164, 92, 0.3);
+}
+
+body.light-theme .navbar {
+  background: rgba(250, 248, 245, 0.9);
+}
+
+body.light-theme .skill-card,
+body.light-theme .about-card,
+body.light-theme .project-card,
+body.light-theme .contact-item,
+body.light-theme .contact-form,
+body.light-theme .ml-sandbox-card {
+  background: #FFFFFF;
+  border-color: rgba(200, 164, 92, 0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
 /* Reset & Box Sizing */
 *, *::before, *::after {
   box-sizing: border-box;
