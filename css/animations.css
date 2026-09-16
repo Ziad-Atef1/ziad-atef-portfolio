@@ -42,9 +42,31 @@
 
 /* Card Hover Elevation & Soft Shadow Glow */
 .interactive-card {
+  position: relative;
+  overflow: hidden;
   transition: transform var(--transition-smooth), 
               box-shadow var(--transition-smooth),
               border-color var(--transition-smooth);
+}
+
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(200, 164, 92, 0.15), transparent 50%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.interactive-card:hover::before {
+  opacity: 1;
+}
+
+body.light-theme .interactive-card::before {
+  background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(200, 164, 92, 0.22), transparent 50%);
 }
 
 /* Dark Card Hover */

@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     typeEffect();
   }
 
-  // 4. 3D Interactive Card Tilt Effect on Hover
+  // 4. 3D Interactive Card Tilt & Holographic Light Sheen Effect
   const tiltCards = document.querySelectorAll('.interactive-card');
   tiltCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -99,6 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const rotateX = ((y - centerY) / centerY) * -6; // max 6deg tilt
       const rotateY = ((x - centerX) / centerX) * 6;
 
+      card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+      card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
     });
 
@@ -107,7 +109,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Skill Bar Fill Trigger on Intersection
+  // 5. Counter-Up Numbers Animation
+  const countUpElements = document.querySelectorAll('.count-up');
+  const countObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const targetVal = parseInt(el.getAttribute('data-target') || el.innerText, 10);
+        if (isNaN(targetVal)) return;
+
+        const prefix = el.getAttribute('data-prefix') || '';
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1600; // ms
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+          const currentVal = Math.floor(easeProgress * targetVal);
+
+          el.innerText = `${prefix}${currentVal}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            el.innerText = `${prefix}${targetVal}${suffix}`;
+          }
+        }
+
+        requestAnimationFrame(updateCounter);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  countUpElements.forEach(el => countObserver.observe(el));
+
+  // 6. Skill Bar Fill Trigger on Intersection
   const skillBars = document.querySelectorAll('.skill-bar-fill');
   const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
