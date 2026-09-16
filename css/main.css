@@ -1,0 +1,242 @@
+/* ==========================================
+   ZIAD ATEF PORTFOLIO — CORE DESIGN SYSTEM
+   Palette & Typography strictly aligned to master prompt specifications:
+   - Dark Background: #141414
+   - Light/Card Background: #F7F3EA
+   - Accent Color: #C8A45C
+   - Dark Mode Text: #F5F5F0
+   - Light Mode Text: #1A1A1A
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+:root {
+  /* Color Tokens */
+  --bg-dark: #141414;
+  --bg-light: #F7F3EA;
+  --accent: #C8A45C;
+  --accent-hover: #D8B46C;
+  --accent-subtle: rgba(200, 164, 92, 0.15);
+  --accent-glow: rgba(200, 164, 92, 0.35);
+  
+  --text-on-dark: #F5F5F0;
+  --text-on-dark-muted: rgba(245, 245, 240, 0.7);
+  --text-on-light: #1A1A1A;
+  --text-on-light-muted: rgba(26, 26, 26, 0.7);
+
+  --border-dark: rgba(200, 164, 92, 0.2);
+  --border-light: rgba(26, 26, 26, 0.12);
+
+  /* Typography Scale */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --h1-size: clamp(2.35rem, 5.2vw, 3.75rem);    /* 37px to 60px */
+  --h2-size: clamp(1.85rem, 3.7vw, 2.4rem);    /* 30px to 38px */
+  --h3-size: clamp(1.3rem, 2.6vw, 1.6rem);     /* 21px to 25px */
+  --body-size: clamp(1.05rem, 1.35vw, 1.2rem);  /* ~17px to 19.2px */
+  --caption-size: 0.875rem;                    /* 14px */
+
+  /* Spacing Scale */
+  --nav-height: 80px;
+  --section-padding: clamp(4rem, 8vw, 7.5rem);
+  --container-width: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  /* Transitions */
+  --transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--body-size);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Canvas Neural Network Background Layer */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Base Typography Classes */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--h1-size); }
+h2 { font-size: var(--h2-size); }
+h3 { font-size: var(--h3-size); }
+
+p {
+  margin-bottom: 1rem;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* Layout Utilities */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Types: Alternating Dark & Light Surfaces */
+.section {
+  position: relative;
+  padding: var(--section-padding) 0;
+  z-index: 1;
+}
+
+.section-dark {
+  background-color: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.section-light {
+  background-color: var(--bg-light);
+  color: var(--text-on-light);
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+  max-width: 720px;
+}
+
+.section-title {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  align-items: baseline;
+}
+
+.section-subtitle {
+  font-size: var(--body-size);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* Divider Accent Line */
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent);
+  margin-top: 1.25rem;
+  border-radius: 2px;
+}
+
+/* Accent Buttons & CTAs */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.85rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #141414;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px var(--accent-glow);
+}
+
+.btn-outline-dark {
+  border-color: var(--accent);
+  color: var(--text-on-dark);
+  background: transparent;
+}
+
+.btn-outline-dark:hover {
+  background: var(--accent-subtle);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.btn-outline-light {
+  border-color: var(--accent);
+  color: var(--text-on-light);
+  background: transparent;
+}
+
+.btn-outline-light:hover {
+  background: rgba(200, 164, 92, 0.12);
+  transform: translateY(-3px);
+}
+
+/* Badge styling */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  font-size: var(--caption-size);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border: 1px solid var(--border-dark);
+}
+
+.badge-light-mode {
+  background: rgba(200, 164, 92, 0.15);
+  color: #9E7D3B;
+  border: 1px solid rgba(200, 164, 92, 0.3);
+}

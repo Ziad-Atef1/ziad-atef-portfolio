@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ziad Atef — Data Science & Machine Learning Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Ziad Atef, Data Science & Machine Learning Engineer. Specializing in predictive ML, computer vision (YOLOv8), data reporting automation, and AI solutions." />
+
+  <!-- Google Fonts: Playfair Display (Serif Headings) & Inter (Sans-serif Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS Files -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- FIXED TOP NAVIGATION BAR -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-dot"></span>
+        <span>Ziad Atef</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#projects" class="nav-link">Portfolio</a></li>
+          <li><a href="#training-projects" class="nav-link">Training</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress-bar"></div>
+  </header>
+
+  <!-- 1. HERO SECTION -->
+  <section id="hero" class="hero-section section-dark">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="hero-badge-wrapper">
+            <span class="badge pulse-badge">
+              <span class="brand-dot" style="width:6px; height:6px;"></span>
+              Available for Freelance & AI Projects
+            </span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="accent-text">Ziad Atef</span>
+          </h1>
+
+          <h2 class="hero-subtitle">
+            Data Science & Machine Learning Engineer
+          </h2>
+
+          <p class="hero-description">
+            Computer Science & AI student at Assiut National University. I build machine learning models, computer vision systems, and automated data pipelines that turn complex raw data into actionable business intelligence.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              Explore Portfolio
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="assets/docs/Ziad_Atef_CV.pdf" target="_blank" download class="btn btn-outline-dark" style="display:inline-flex; align-items:center; gap:0.4rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download CV
+            </a>
+            <a href="#contact" class="btn btn-outline-dark">
+              Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper reveal reveal-delay-2">
+          <div class="profile-card interactive-card">
+            <img src="assets/images/ziad_profile.jpg" alt="Ziad Atef" class="profile-img" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ABOUT ME SECTION -->
+  <section id="about" class="section section-dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">01 / Background</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <p class="about-text">
+            I'm Ziad Atef, a Computer Science & AI student at Assiut National University, focused on Data Science and Machine Learning.
+          </p>
+          <p class="about-text">
+            Alongside my studies, I'm completing DEPI's 6-month Data Science track, and I've delivered freelance machine learning and data solutions for real clients — including a customer retention classification model built by engineering the target from raw order data, and Arabic-language data reporting and automation solutions.
+          </p>
+          <p class="about-text">
+            My graduation project applies Computer Vision (YOLOv8) to real-time occupancy detection for a Smart Campus Space Management System.
+          </p>
+          <p class="about-text">
+            I hold certifications from NVIDIA, NTI, and ITI in Machine Learning, Deep Learning, and Data Science fundamentals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. EDUCATIONAL BACKGROUND -->
+  <section id="education" class="section section-light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle" style="color:#9E7D3B;">02 / Academic Journey</span>
+        <h2 class="section-title" style="color:var(--text-on-light);">Educational Background</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="timeline-icon">🎓</div>
+          <div class="timeline-card interactive-card">
+            <span class="timeline-date">2023 – 2027 (Expected Graduation: 2027)</span>
+            <h3 class="timeline-title">Bachelor's Degree in Computer Science and Artificial Intelligence</h3>
+            <p class="timeline-institution">Assiut National University – Faculty of Computers & Artificial Intelligence</p>
+            <p style="font-size:0.95rem; color:var(--text-on-light-muted); line-height:1.6;">
+              Specializing in Data Science, Machine Learning, and Computer Vision. Coursework includes Data Structures, Algorithms, Statistical Inference, Database Systems, Linear Algebra, and Deep Learning Architectures.
+            </p>
+            <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
+              <span class="badge badge-light-mode">Computer Vision</span>
+              <span class="badge badge-light-mode">Machine Learning</span>
+              <span class="badge badge-light-mode">Data Engineering</span>
+              <span class="badge badge-light-mode">Database Management</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SKILLS SECTION -->
+  <section id="skills" class="section section-dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">03 / Core Competencies</span>
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Skill 1 -->
+        <div class="skill-card interactive-card reveal">
+          <div>
+            <div class="skill-header">
+              <div class="skill-icon-box">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M11.927 0C5.642 0 6.01 2.738 6.01 2.738l.006 2.83h5.992v.852H3.596S0 5.993 0 12.302c0 6.308 3.13 6.096 3.13 6.096h1.87v-2.632s-.103-3.134 3.08-3.134h5.27s2.977.051 2.977-2.916V3.131S16.927 0 11.927 0zm-2.58 1.802a.965.965 0 1 1 0 1.93.965.965 0 0 1 0-1.93zM12.073 24c6.285 0 5.917-2.738 5.917-2.738l-.006-2.83H11.99v-.852h8.412s3.596.427 3.596-5.882c0-6.308-3.13-6.096-3.13-6.096h-1.87v2.632s.103 3.134-3.08 3.134h-5.27s-2.977-.051-2.977 2.916v6.527S7.073 24 12.073 24zm2.58-1.802a.965.965 0 1 1 0-1.93.965.965 0 0 1 0 1.93z"/>
+                </svg>
+              </div>
+              <h3 class="skill-name">Python</h3>
+            </div>
+            <p class="skill-desc">
+              Primary language for data science and machine learning; used daily for data cleaning, feature engineering, model building, and automation.
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="pill-tag">Pandas</span>
+            <span class="pill-tag">NumPy</span>
+            <span class="pill-tag">Scikit-learn</span>
+            <span class="pill-tag">Automation</span>
+          </div>
+        </div>
+
+        <!-- Skill 2 -->
+        <div class="skill-card interactive-card reveal reveal-delay-1">
+          <div>
+            <div class="skill-header">
+              <div class="skill-icon-box">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="4" width="16" height="16" rx="3"/>
+                  <rect x="8" y="8" width="8" height="8" rx="1" fill="rgba(200,164,92,0.2)"/>
+                  <line x1="9" y1="1" x2="9" y2="4"/>
+                  <line x1="15" y1="1" x2="15" y2="4"/>
+                  <line x1="9" y1="20" x2="9" y2="23"/>
+                  <line x1="15" y1="20" x2="15" y2="23"/>
+                  <line x1="20" y1="9" x2="23" y2="9"/>
+                  <line x1="20" y1="15" x2="23" y2="15"/>
+                  <line x1="1" y1="9" x2="4" y2="9"/>
+                  <line x1="1" y1="15" x2="4" y2="15"/>
+                </svg>
+              </div>
+              <h3 class="skill-name">Machine Learning</h3>
+            </div>
+            <p class="skill-desc">
+              Builds and evaluates classification and prediction models using Scikit-learn and XGBoost, with hands-on experience in feature engineering, handling imbalanced datasets, and cross-validation. Applied to real client projects including customer retention modeling.
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="pill-tag">XGBoost</span>
+            <span class="pill-tag">SMOTE</span>
+            <span class="pill-tag">GridSearchCV</span>
+            <span class="pill-tag">Stratified K-Fold</span>
+          </div>
+        </div>
+
+        <!-- Skill 3 -->
+        <div class="skill-card interactive-card reveal reveal-delay-2">
+          <div>
+            <div class="skill-header">
+              <div class="skill-icon-box">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Vision Bounding Box Reticle -->
+                  <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+                  <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+                  <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+                  <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+                  <!-- Lens Aperture -->
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <h3 class="skill-name">Computer Vision</h3>
+            </div>
+            <p class="skill-desc">
+              Works with YOLOv8 for real-time object detection, currently applying it in a graduation project for occupancy estimation and space management, including model training, evaluation, and real-time inference.
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="pill-tag">YOLOv8</span>
+            <span class="pill-tag">Roboflow</span>
+            <span class="pill-tag">Real-Time Inference</span>
+            <span class="pill-tag">Object Detection</span>
+          </div>
+        </div>
+
+        <!-- Skill 4 -->
+        <div class="skill-card interactive-card reveal reveal-delay-3">
+          <div>
+            <div class="skill-header">
+              <div class="skill-icon-box">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="8" ry="2.8"/>
+                  <path d="M4 5v6c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8V5"/>
+                  <path d="M4 11v6c0 1.5 3.6 2.8 8 2.8s8-1.3 8-2.8v-6"/>
+                </svg>
+              </div>
+              <h3 class="skill-name">SQL / MySQL</h3>
+            </div>
+            <p class="skill-desc">
+              Queries, structures, and manages relational data efficiently, including hands-on database design and data retrieval.
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="pill-tag">MySQL</span>
+            <span class="pill-tag">Relational Design</span>
+            <span class="pill-tag">Data Queries</span>
+            <span class="pill-tag">Aggregation</span>
+          </div>
+        </div>
+
+        <!-- Skill 5 -->
+        <div class="skill-card interactive-card reveal reveal-delay-4">
+          <div>
+            <div class="skill-header">
+              <div class="skill-icon-box">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="12" width="4" height="8" rx="1" fill="rgba(200,164,92,0.2)"/>
+                  <rect x="10" y="8" width="4" height="12" rx="1" fill="rgba(200,164,92,0.2)"/>
+                  <rect x="17" y="4" width="4" height="16" rx="1" fill="rgba(200,164,92,0.2)"/>
+                  <path d="M4 9l5-4 5 3 6-5" stroke-width="2"/>
+                </svg>
+              </div>
+              <h3 class="skill-name">Data Visualization & Reporting</h3>
+            </div>
+            <p class="skill-desc">
+              Matplotlib, Seaborn, Plotly, automated PDF report generation (WeasyPrint, ReportLab), including Arabic-language reporting with RTL layout support.
+            </p>
+          </div>
+          <div class="skill-tags">
+            <span class="pill-tag">Plotly</span>
+            <span class="pill-tag">ReportLab</span>
+            <span class="pill-tag">WeasyPrint</span>
+            <span class="pill-tag">Arabic RTL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CERTIFICATIONS SECTION -->
+  <section id="certifications" class="section section-light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle" style="color:#9E7D3B;">04 / Credentials</span>
+        <h2 class="section-title" style="color:var(--text-on-light);">Certifications</h2>
+        <p style="color:var(--text-on-light-muted); margin-top:0.5rem;">Click any certificate card below to open its high-resolution view and dedicated technical overview.</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <!-- Certifications Category Filter -->
+      <div id="cert-filters" class="filter-tabs reveal">
+        <button class="filter-btn active" onclick="filterCerts('all', this)">All Credentials</button>
+        <button class="filter-btn" onclick="filterCerts('ai', this)">AI & GenAI</button>
+        <button class="filter-btn" onclick="filterCerts('ml', this)">Machine Learning</button>
+        <button class="filter-btn" onclick="filterCerts('dev', this)">Python & DBs</button>
+      </div>
+
+      <div class="certs-grid">
+        <!-- Cert 1 -->
+        <div class="cert-card interactive-card reveal" data-category="ai" onclick="openCertModal('nvidia-llm')">
+          <div>
+            <span class="cert-badge">NVIDIA</span>
+            <h3 class="cert-title">Building LLM Applications With Prompt Engineering</h3>
+            <p class="cert-date">Issued: February 2026</p>
+          </div>
+          <button class="cert-action-btn">
+            <span>View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="cert-card interactive-card reveal reveal-delay-1" data-category="ai" onclick="openCertModal('nvidia-ai-for-all')">
+          <div>
+            <span class="cert-badge">NVIDIA</span>
+            <h3 class="cert-title">AI for All: From Basics to GenAI Practice</h3>
+            <p class="cert-date">Issued: February 2026</p>
+          </div>
+          <button class="cert-action-btn">
+            <span>View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="cert-card interactive-card reveal reveal-delay-2" data-category="ml" onclick="openCertModal('nti-ml-summer')">
+          <div>
+            <span class="cert-badge">NTI / ITIDA</span>
+            <h3 class="cert-title">Machine Learning Summer Training (120 Hours)</h3>
+            <p class="cert-date">Aug – Sep 2025 · Score: 94%</p>
+          </div>
+          <button class="cert-action-btn">
+            <span>View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="cert-card interactive-card reveal reveal-delay-3" data-category="ml" onclick="openCertModal('nti-digital-egypt')">
+          <div>
+            <span class="cert-badge">NTI / Digital Egypt</span>
+            <h3 class="cert-title">Machine Learning for Data Analysis</h3>
+            <p class="cert-date">Nov 2025 – Jan 2026 · Score: 84%</p>
+          </div>
+          <button class="cert-action-btn">
+            <span>View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Cert 5 -->
+        <div class="cert-card interactive-card reveal" data-category="dev" onclick="openCertModal('iti-python')">
+          <div>
+            <span class="cert-badge">ITI Mahara-Tech</span>
+            <h3 class="cert-title">Python Programming Basics</h3>
+            <p class="cert-date">Issued: October 2025</p>
+          </div>
+          <button class="cert-action-btn">
+            <span>View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Cert 6 -->
+        <div class="cert-card interactive-card reveal reveal-delay-1" data-category="dev" onclick="openCertModal('iti-database')">
+          <div>
+            <span class="cert-badge">ITI Mahara-Tech</span>
+            <h3 class="cert-title">Database Fundamentals</h3>
+            <p class="cert-date">Issued: October 2025</p>
+          </div>
+          <button class="cert-action-btn">
+            <span>View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Cert 7 -->
+        <div class="cert-card interactive-card reveal reveal-delay-2" data-category="ai" onclick="openCertModal('ebda3-masr')">
+          <div>
+            <span class="cert-badge">Innovation Camp</span>
+            <h3 class="cert-title">Ebda3 Masr Certificate of Appreciation</h3>
+            <p class="cert-date">Issued: April 2026</p>
+          </div>
+          <button class="cert-action-btn">
+            <span>View Certificate</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. PROJECT PORTFOLIO SECTION -->
+  <section id="projects" class="section section-dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">05 / Featured Case Studies</span>
+        <h2 class="section-title">Project Portfolio</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <!-- Projects Category Filter -->
+      <div id="project-filters" class="filter-tabs reveal">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+        <button class="filter-btn" onclick="filterProjects('ml', this)">Machine Learning</button>
+        <button class="filter-btn" onclick="filterProjects('cv', this)">Computer Vision</button>
+        <button class="filter-btn" onclick="filterProjects('auto', this)">Automation & BI</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card interactive-card reveal" data-category="ml" onclick="openProjectModal('retention-classification')">
+          <div>
+            <div class="project-badge-bar">
+              <span class="project-category">Freelance Client Solution</span>
+              <span class="badge">Machine Learning</span>
+            </div>
+            <h3 class="project-title">Customer Retention Classification — Restaurant Client</h3>
+            <p class="project-summary">
+              Engineered a machine learning customer retention target from 3,000 raw orders across 786 profiles. Solved class imbalance using SMOTE and achieved 90% prediction accuracy with XGBoost.
+            </p>
+            <div class="project-metrics-box">
+              🎯 <strong>Key Outcome:</strong> 90% accuracy (+12% improvement over baseline) & 0.94 F1-Score.
+            </div>
+          </div>
+          <div class="project-footer">
+            <div class="skill-tags">
+              <span class="pill-tag">Python</span>
+              <span class="pill-tag">XGBoost</span>
+              <span class="pill-tag">SMOTE</span>
+            </div>
+            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
+              View Details →
+            </span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card interactive-card reveal reveal-delay-1" data-category="auto" onclick="openProjectModal('arabic-sales-report')">
+          <div>
+            <div class="project-badge-bar">
+              <span class="project-category">Freelance Automation</span>
+              <span class="badge">Data Engineering</span>
+            </div>
+            <h3 class="project-title">Arabic Sales Report Automation</h3>
+            <p class="project-summary">
+              Built an automated Python pipeline converting raw sales data into client-ready Arabic PDF reports with RTL layout support, automated chart generation, and revenue decline detection.
+            </p>
+            <div class="project-metrics-box">
+              📉 <strong>Key Outcome:</strong> Flagged 85% MoM revenue drop & identified 45.7% top city revenue driver.
+            </div>
+          </div>
+          <div class="project-footer">
+            <div class="skill-tags">
+              <span class="pill-tag">Python</span>
+              <span class="pill-tag">ReportLab</span>
+              <span class="pill-tag">WeasyPrint</span>
+            </div>
+            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
+              View Details →
+            </span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card interactive-card reveal reveal-delay-2" data-category="auto" onclick="openProjectModal('arabic-sales-dashboard')">
+          <div>
+            <div class="project-badge-bar">
+              <span class="project-category">Freelance BI Solution</span>
+              <span class="badge">Excel / VBA</span>
+            </div>
+            <h3 class="project-title">Arabic Sales Dashboard (Excel / VBA)</h3>
+            <p class="project-summary">
+              Built an interactive Arabic-language sales dashboard using Excel/VBA for a client, turning raw sales data into a navigable, business-friendly view without needing complex software tools.
+            </p>
+            <div class="project-metrics-box">
+              📊 <strong>Key Outcome:</strong> Automated daily sales tracking & regional performance views.
+            </div>
+          </div>
+          <div class="project-footer">
+            <div class="skill-tags">
+              <span class="pill-tag">Excel</span>
+              <span class="pill-tag">VBA</span>
+              <span class="pill-tag">Pivot Tables</span>
+            </div>
+            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
+              View Details →
+            </span>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card interactive-card reveal reveal-delay-3" data-category="cv" onclick="openProjectModal('smart-campus-yolo')">
+          <div>
+            <div class="project-badge-bar">
+              <span class="project-category">Graduation Project</span>
+              <span class="badge">Computer Vision</span>
+            </div>
+            <h3 class="project-title">Smart Campus Space Management System</h3>
+            <p class="project-summary">
+              Developing a YOLOv8-based Computer Vision system for real-time person detection and lecture hall occupancy estimation for a Smart Campus ecosystem.
+            </p>
+            <div class="project-metrics-box">
+              🏫 <strong>Key Outcome:</strong> Real-time occupancy tracking for automated room booking.
+            </div>
+          </div>
+          <div class="project-footer">
+            <div class="skill-tags">
+              <span class="pill-tag">YOLOv8</span>
+              <span class="pill-tag">Roboflow</span>
+              <span class="pill-tag">Computer Vision</span>
+            </div>
+            <span style="color:var(--accent); font-size:0.85rem; font-weight:600; display:inline-flex; align-items:center; gap:0.3rem;">
+              View Details →
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ADDITIONAL TRAINING PROJECTS -->
+  <section id="training-projects" class="section section-light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle" style="color:#9E7D3B;">06 / Exploration</span>
+        <h2 class="section-title" style="color:var(--text-on-light);">Additional Training Projects</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="additional-projects-grid">
+        <div class="mini-project-card interactive-card reveal">
+          <h3 class="mini-project-title">Customer Churn Detection</h3>
+          <p class="mini-project-desc">
+            Predicts customer churn by analyzing user behavior and transaction history, to help businesses identify at-risk customers early.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="badge badge-light-mode">Python</span>
+            <span class="badge badge-light-mode">Scikit-learn</span>
+            <span class="badge badge-light-mode">Pandas</span>
+            <span class="badge badge-light-mode">Matplotlib</span>
+          </div>
+        </div>
+
+        <div class="mini-project-card interactive-card reveal reveal-delay-1">
+          <h3 class="mini-project-title">Diabetes Prediction Model</h3>
+          <p class="mini-project-desc">
+            A predictive model to identify the likelihood of a person developing diabetes based on medical data, as an early-warning tool for risk assessment.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+            <span class="badge badge-light-mode">Python</span>
+            <span class="badge badge-light-mode">Logistic Regression</span>
+            <span class="badge badge-light-mode">Random Forest</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. CONTACT SECTION -->
+  <section id="contact" class="section section-dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-subtitle">07 / Collaboration</span>
+        <h2 class="section-title">Contact Me</h2>
+        <p style="color:var(--text-on-dark-muted); margin-top:0.5rem;">Have a machine learning project, data automation need, or opportunity? Let's connect!</p>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card-list reveal">
+          <!-- Phone -->
+          <div class="contact-item interactive-card">
+            <div class="contact-item-left">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-label">Phone</div>
+                <div class="contact-value">+20 10 68131634</div>
+              </div>
+            </div>
+            <button id="copy-phone-btn" class="copy-btn" onclick="copyToClipboard('+201068131634', 'copy-phone-btn')">Copy</button>
+          </div>
+
+          <!-- Email -->
+          <div class="contact-item interactive-card">
+            <div class="contact-item-left">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">ziad.atef.yehia@gmail.com</div>
+              </div>
+            </div>
+            <button id="copy-email-btn" class="copy-btn" onclick="copyToClipboard('ziad.atef.yehia@gmail.com', 'copy-email-btn')">Copy</button>
+          </div>
+
+          <!-- LinkedIn -->
+          <div class="contact-item interactive-card">
+            <div class="contact-item-left">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-value">ziad-atef-747a54351</div>
+              </div>
+            </div>
+            <a href="https://linkedin.com/in/ziad-atef-747a54351" target="_blank" class="copy-btn">Visit</a>
+          </div>
+
+          <!-- Facebook -->
+          <div class="contact-item interactive-card">
+            <div class="contact-item-left">
+              <div class="contact-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="contact-label">Facebook</div>
+                <div class="contact-value">ziad.atef</div>
+              </div>
+            </div>
+            <a href="https://facebook.com/share/19jYzPcfKG/" target="_blank" class="copy-btn">Visit</a>
+          </div>
+        </div>
+
+        <!-- Quick Inquiry Form -->
+        <div class="contact-form reveal reveal-delay-2">
+          <h3 style="font-size:1.3rem; color:var(--text-on-dark); margin-bottom:1.25rem;">Send a Direct Message</h3>
+          <form id="contact-form" action="https://formspree.io/f/xovjepzg" method="POST">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" name="name" class="form-input" placeholder="e.g. Sarah Ahmed" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" class="form-input" placeholder="e.g. sarah@company.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Project / Inquiry Message</label>
+              <textarea name="message" class="form-textarea" rows="4" placeholder="Briefly describe your data science or machine learning project..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOBAL MODAL OVERLAY FOR CERTIFICATES & PROJECTS -->
+  <div id="global-modal" class="modal-overlay">
+    <div class="modal-container">
+      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <div id="modal-body-content" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- SCROLL TO TOP FLOATING BUTTON -->
+  <button id="scroll-to-top" title="Scroll To Top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Ziad Atef. Built with HTML5, CSS3 & JavaScript — Data Science & Machine Learning Specialist.</p>
+    </div>
+  </footer>
+
+  <!-- Custom Scripts -->
+  <script src="js/background.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

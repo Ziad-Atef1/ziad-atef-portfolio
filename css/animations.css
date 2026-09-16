@@ -1,0 +1,83 @@
+/* ==========================================
+   ZIAD ATEF PORTFOLIO — ANIMATIONS & REVEALS
+   - Scroll-reveal section triggers (.reveal)
+   - Word-by-word heading reveal (.word-span)
+   - Hover lifts & gold ambient glows
+   ========================================== */
+
+/* Section Fade-In & Slide-Up Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Delay Helpers for Grid Items */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Word-By-Word Heading Animation */
+.word-span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) rotate(2deg);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.section-title.reveal-active .word-span {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+/* Card Hover Elevation & Soft Shadow Glow */
+.interactive-card {
+  transition: transform var(--transition-smooth), 
+              box-shadow var(--transition-smooth),
+              border-color var(--transition-smooth);
+}
+
+/* Dark Card Hover */
+.section-dark .interactive-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
+}
+
+/* Light Card Hover */
+.section-light .interactive-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(200, 164, 92, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08), 0 0 18px rgba(200, 164, 92, 0.25);
+}
+
+/* Hero Badge Pulse Glow */
+@keyframes goldPulse {
+  0% { box-shadow: 0 0 0 0 rgba(200, 164, 92, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(200, 164, 92, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(200, 164, 92, 0); }
+}
+
+.pulse-badge {
+  animation: goldPulse 2.5s infinite;
+}
+
+/* Floating animation for subtle element shifts */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.floating-element {
+  animation: subtleFloat 4s ease-in-out infinite;
+}
